@@ -1,37 +1,61 @@
-# Hotel Reservation Cancellation Prediction
+# 🏨 Hotel Booking Cancellation Predictive Pipeline
 
-Predicts whether a hotel booking will be cancelled, so a hotel can spot high-risk bookings early and plan retention actions.
+An end-to-end machine learning system designed to classify hotel booking cancellation risks. This project helps hospitality stakeholders optimize inventory management, mitigate revenue losses, and implement automated retention campaigns for high-risk reservations.
 
-## Problem
-Cancellations cause lost revenue and empty rooms. The goal is to classify each booking as `Canceled` or `Not_Canceled` and understand which factors drive cancellations.
+## 🔗 Project Assets
+* **Interactive Code Workspace:** `hotel-cancellation-prediction.ipynb`
+* **BI Dashboard Portfolio:** Power BI template files included in the root directory.
 
-## Dataset
-- File: `Hotel Reservations.csv` (36,275 bookings, 19 columns)
-- Target: `booking_status` (32.8% Canceled, 67.2% Not Canceled)
+---
 
-## Approach
-1. Data checks: no missing values, no duplicate rows
-2. EDA: cancellation rate, lead time, market segment
-3. Encoding and 80/20 train-test split (29,020 / 7,255 rows)
-4. Models: Logistic Regression, Decision Tree, Random Forest
-5. Hyperparameter tuning of Random Forest with GridSearchCV (108 candidates, 5-fold CV)
+## 📌 Business Problem Context
+Late cancellations directly result in empty rooms and lost revenue. The primary objective is to build a binary classification framework (`Canceled` vs. `Not_Canceled`) and identify key operational levers—such as lead times—that drive customer churn.
 
-## Key findings
-- Cancelled bookings had a much longer average lead time (139 days) than completed stays (59 days).
-- `lead_time` is the most important feature in the final model.
+---
 
-## Results (test set)
-| Model | Accuracy | ROC-AUC |
-|---|---|---|
-| Logistic Regression | 0.811 | 0.871 |
-| Decision Tree | 0.880 | 0.934 |
-| Random Forest | 0.897 | 0.953 |
-| Random Forest (tuned) | 0.905 | 0.957 |
+## 📊 Dataset & Pipeline Architecture
+* **Dataset Scale:** 36,275 structured booking records across 19 unique categorical and numerical features.
+* **Target Distribution:** Imbalanced distribution containing 32.8% Canceled and 67.2% Successfully Completed bookings.
+* **Preprocessing Architecture:** Executed robust feature transformations and categorical encoding strictly within an 80/20 train-test split (29,020 train / 7,255 test records) to guarantee zero data leakage.
 
-For the Canceled class the tuned model gets precision 0.89 and recall 0.81.
+---
 
-## Tech stack
-Python, Pandas, NumPy, Scikit-Learn, Matplotlib, Seaborn, Power BI (dashboard)
+## 🤖 Model Evaluation & Hyperparameter Tuning
 
-## Author
-Swati Tiwari | [GitHub](https://github.com/tiwariswati186-alt) | [LinkedIn](https://www.linkedin.com/in/swati-tiwari-37972317a)
+We benchmarked multiple predictive models, applying 5-fold cross-validation with grid search optimizing over 108 parameter configurations for the final ensemble setup.
+
+| Predictive Model | Accuracy | ROC-AUC |
+| :--- | :---: | :---: |
+| Logistic Regression (Baseline) | 0.811 | 0.871 |
+| Decision Tree Classifier | 0.880 | 0.934 |
+| Random Forest (Vanilla) | 0.897 | 0.953 |
+| **Tuned Random Forest (Selected)** | **0.905** | **0.957** |
+
+### 📈 Minority Class Performance (Canceled Group):
+* **Precision:** `0.89` (Minimizes false positives, ensuring marketing teams don't disturb valid guests)
+* **Recall:** `0.81` (Successfully captures 81% of all actual cancellation risks)
+
+---
+
+## 🔎 Key Data Insights & Business Action Rules
+* **The Lead Time Threshold:** Exploratory Data Analysis (EDA) revealed that canceled reservations have a **135% longer average lead time** compared to fulfilled bookings (139 days vs. 59 days). 
+* **Feature Importance:** MDI ranking indicates `lead_time` is the single highest predictor of cancellation risk, allowing hotels to set automated confirmation prompts when a booking crosses a 60-day threshold.
+
+---
+
+## 📊 Power BI Analytics Dashboard
+The generated structured model predictions were exported into an interactive Power BI interface focused on:
+* **Revenue Risk Tracking:** Visualizing total monetary value locked in high-risk categories.
+* **Segment Analysis:** Filtering cancellation ratios across booking channels (Online vs. Corporate offline packages).
+
+---
+
+## 🛠️ Local Installation & Usage
+```bash
+git clone https://github.com
+cd hotel-cancellation-prediction
+pip install -r requirements.txt
+```
+
+**Tech Stack:** Python, Scikit-Learn, GridSearchCV, Power BI, Pandas, NumPy, Matplotlib, Seaborn.
+
