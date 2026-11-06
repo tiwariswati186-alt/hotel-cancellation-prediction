@@ -30,15 +30,6 @@ Cancellations cause lost revenue and empty rooms. The goal is to classify each b
 
 For the Canceled class the tuned model gets precision 0.89 and recall 0.81.
 
-## How to run
-```bash
-git clone https://github.com/tiwariswati186-alt/hotel-cancellation-prediction.git
-cd hotel-cancellation-prediction
-pip install -r requirements.txt
-jupyter notebook Predicting_Hotel_Reservation_Cancellations.ipynb
-```
-Keep `Hotel Reservations.csv` in the same folder as the notebook.
-
 ## Tech stack
 Python, Pandas, NumPy, Scikit-Learn, Matplotlib, Seaborn, Power BI (dashboard)
 
