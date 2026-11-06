@@ -8,7 +8,6 @@ Cancellations cause lost revenue and empty rooms. The goal is to classify each b
 ## Dataset
 - File: `Hotel Reservations.csv` (36,275 bookings, 19 columns)
 - Target: `booking_status` (32.8% Canceled, 67.2% Not Canceled)
-- Source: [add dataset link here]
 
 ## Approach
 1. Data checks: no missing values, no duplicate rows
